@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<link th:replace="index :: bootstrap"/>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div th:replace="index :: header"></div>
+			<div class="col-4">
+				<h1>Rooms</h1>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<td>room number</td>
+							<td>status</td>
+							<td>action </td>				
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="elem : ${allrooms}" >
+							<td th:text="${elem.getId()}"></td>
+							<td>
+								<span th:text="${elem.isStatus ? 'active' : 'unactive'}" class="text-light p-1 rounded" th:style="${elem.isStatus ? 'background-color:green' : 'background-color:red' }"></span>
+							</td>
+							<td>
+								<form th:action="'/admin/toggle-room-status/' + ${elem.getId()}" method="post">
+									<button type="submit" onclick="javascript:return confirm('are you sure?');" class="btn btn-danger">
+											change status
+									</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

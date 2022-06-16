@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<link th:replace="index :: bootstrap"/>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div th:replace="index :: header"></div>
+			<div class="col-4">
+				<h1 class="text-success">assign room</h1>
+				<h4 th:text="'customer name : '+${customer.getName()}"></h4>
+				<h4 th:text="'no of room to assign : '+${noofroom}" class="mb-5"></h4>
+				<form id="xoxo" th:action="'/admin/add-customer-room'" method="post" class>
+					<div  th:each="elem : ${activeroom}" class="m-0">
+						<label>
+							<input type="checkbox" th:attr="value = ${elem.getId()},name = 'A'+${elem.getId()}" />
+							<span th:text="${elem.getId()}"></span>
+						</label>
+					</div>
+					<input type="hidden" name="customerid" th:attr="value = ${customer.getId()}" />
+					<input type="submit" class="btn btn-primary m-0"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script th:inline="javascript">
+		var limit = /*[[${noofroom}]]*/;
+		var checkboxgroup = document.getElementsByTagName("input");
+		for (var i = 0; i < checkboxgroup.length; i++) {
+			checkboxgroup[i].onclick = function() {
+				var checkedcount = 0;
+				for (var i = 0; i < checkboxgroup.length; i++) {
+					checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
+				}
+				if (checkedcount > limit) {
+					console.log("You can select maximum of " + limit + " checkbox.");
+					alert("You can select maximum of " + limit + " checkbox.");
+					this.checked = false;
+				}
+			}
+		}
+	</script>
+	
+</body>
+</html>

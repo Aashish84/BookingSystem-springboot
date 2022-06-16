@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<link th:href="@{/bootstrap.min.css}" th:rel="stylesheet" th:fragment="bootstrap"/>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2 bg-dark vh-100 text-light p-3" th:fragment="header">	
+				<h1 class="mb-5">Welcome</h1>
+				<a href="/admin" class="btn btn-primary mt-3 w-100">dash board</a><br/>
+				<a href="/admin/view-rooms" class="btn btn-primary mt-3 w-100">rooms</a><br/>
+				<a href="/admin/all-customers" class="btn btn-primary mt-3 w-100">view customer</a><br/>
+				<a href="/admin/add-customer" class="btn btn-primary mt-3 w-100">assign room</a>
+				<a href="/logout" class="btn btn-primary mt-3 w-100">logout</a>
+			</div>
+			<div class="col-8">
+				<h1>Find Customer</h1> 
+				<form th:action="'/admin/customers'" method="post">
+					<div class="input-group">
+					<input type="text" name="customername" placeholder="enter customer name" class="p-2"/>
+					<input type="submit" class="btn btn-success"/>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
