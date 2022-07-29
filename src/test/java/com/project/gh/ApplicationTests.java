@@ -1,10 +1,10 @@
-package com.sabin.gh;
+package com.project.gh;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SabinApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
