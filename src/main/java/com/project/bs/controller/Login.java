@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class Login {
 	@GetMapping
 	public String login() {
-		return "/login";
+		return "login";
 	}
 
 	@PostMapping("/login")

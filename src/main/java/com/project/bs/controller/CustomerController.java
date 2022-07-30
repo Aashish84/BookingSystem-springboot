@@ -38,7 +38,7 @@ public class CustomerController {
 		List<Customer> allCustomers = customerService.getAllCustomers();
 		System.out.println(allCustomers.get(0).getRooms());
 		m.addAttribute("result", allCustomers);
-		return "/customer/view-page";
+		return "customer/view-page";
 	}
 
 	@PostMapping("/customers")
@@ -47,14 +47,14 @@ public class CustomerController {
 		List<Customer> allCustomers = customerService.getAllCustomersByName(cusName);
 		System.out.println(allCustomers.get(0).getRooms());
 		m.addAttribute("result", allCustomers);
-		return "/customer/view-page";
+		return "customer/view-page";
 	}
 
 	@PostMapping("/customer-checkout/{id}")
 	@Transactional
 	public String customerCheckout(@PathVariable("id") int id) {
 		customerService.toggleCustomerCheckedinStatus(id);
-		return "/index";
+		return "index";
 	}
 
 	@GetMapping("/add-customer")
@@ -84,6 +84,6 @@ public class CustomerController {
 		}
 		Customer assignCustomerRoom = customerService.assignCustomerRoom(roomnumbers, cusid);
 		m.addAttribute("result", assignCustomerRoom);
-		return "/customer/view-page";
+		return "customer/view-page";
 	}
 }

@@ -21,7 +21,7 @@ public class RoomController {
 	@GetMapping("/view-rooms")
 	public String viewRooms(Model m) {
 		m.addAttribute("allrooms", roomService.getAllRooms());
-		return "/room/view-page";
+		return "room/view-page";
 	}
 
 	@PostMapping("/toggle-room-status/{id}")
